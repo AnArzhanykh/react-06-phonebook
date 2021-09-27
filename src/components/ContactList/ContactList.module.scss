@@ -1,0 +1,14 @@
+.ContactList{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding-right: 40px;
+    padding-top: 30px;
+}
+
+.item {
+    display: flex;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
