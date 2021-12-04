@@ -1,10 +1,10 @@
 
-import  React, {Component} from 'react';
-import PropTypes from 'prop-types'
-import styles from './ContactForm.module.scss'
+import React, {Component} from 'react';
+import styles from './ContactForm.module.scss';
+import {connect} from "react-redux";
+import *as actions from '../../redux/items/items-action'
 
 class ContactForm extends Component {
-    
     state = {
         name: '',
         number: ''
@@ -12,21 +12,23 @@ class ContactForm extends Component {
 
     handleName (e) {
         this.setState({name: e.currentTarget.value})
-}
+    }
 
     handleNumber(e){
         this.setState({number: e.currentTarget.value})
+    }
+
+    simpleValue(e){
+        
     }
 
     cleanInput(){
         this.setState({name: '', number: ''});
     }
 
-
+       
     render(){
-    const {name, number} = this.state
-    const {addContacts}= this.props
-
+    const {name, number} = this.state;
     return(
         <div className={styles.ContactForm}>
             <label className={styles.ContactForm__input}>
@@ -54,7 +56,7 @@ class ContactForm extends Component {
                 />
             </label>
 
-            <button className={styles.ContactForm__button} type="submit"  onClick={()=>addContacts(name, number, this.cleanInput())}>
+            <button className={styles.ContactForm__button} type="submit"  onClick={() => this.props.addItems(name, number, this.cleanInput())}>
             Add contact
             </button>
         </div>
@@ -64,7 +66,9 @@ class ContactForm extends Component {
 }
 
 
-ContactForm.propTypes = {
-    addContacts: PropTypes.func.isRequired,
-}
-export default ContactForm
+
+const mapDispatchToProps = dispatch =>({
+    addItems: (name, number) => dispatch(actions.addItems(name, number))
+})
+
+export default connect(null, mapDispatchToProps)(ContactForm)
