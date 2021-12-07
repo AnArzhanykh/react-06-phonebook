@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import ContactList from "./components/ContactList";
 import Filter from "./components/Filter";
 import ContactForm from "./components/ContactForm";

@@ -18,15 +18,10 @@ class ContactForm extends Component {
         this.setState({number: e.currentTarget.value})
     }
 
-    simpleValue(e){
-        
-    }
-
     cleanInput(){
         this.setState({name: '', number: ''});
     }
 
-       
     render(){
     const {name, number} = this.state;
     return(
@@ -64,7 +59,6 @@ class ContactForm extends Component {
     }
 
 }
-
 
 
 const mapDispatchToProps = dispatch =>({

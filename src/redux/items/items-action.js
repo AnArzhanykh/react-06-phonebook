@@ -1,14 +1,16 @@
-import  actionTypes from './items-type'
 
-export const addItems = (name, number)=>({
-    type: actionTypes.ADD,
-    payload: {
-        name,
-        number,
+import { createAction } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from "uuid";
+
+export const addItems = createAction('item/add', (name, number)=>{
+    return {
+        payload: {
+            id: uuidv4(),
+            name,
+            number,
+        }
     }
-})
+});
 
-export const deleteItems = (id)=>({
-    type: actionTypes.DELETE,
-    payload: id,
-})
+
+export const deleteItems=createAction('item/delete')
